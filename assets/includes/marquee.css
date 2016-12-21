@@ -1,0 +1,23 @@
+/* CSS Document */
+@import url(http://fonts.googleapis.com/css?family=Lato:300|PT+Serif:400);
+
+body {
+    margin: 0px;
+    padding: 10px;
+}
+
+.marquee {
+    font-size: 16px;
+    height: 425px;
+    max-width: 1200px;
+    margin: 0px auto 20px auto;
+    border: 1px solid #ccc;
+}
+
+.marquee .marquee_data {
+    display: none;
+}
+
+
+
+
