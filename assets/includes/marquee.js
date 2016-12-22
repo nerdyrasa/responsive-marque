@@ -29,10 +29,24 @@ function marqueeGatherData() {
       '"style="background-image:url(' + panel_image_l + ');"><div class="overlay"></div>' +
       '<div class="panel_caption">' + panel_caption + '</div></div>';
 
-    console.log(panel_image_l);
+    var marqueeTimer = setInterval(marqueeAdvance, 100);
   });
-
 }
+  function marqueeAdvance() {
+    var marqueeWidth = $('.marquee').width();
+
+    if ( marqueeWidth > marqueeVars.mobileSize ) {
+      marqueeVars.screenSize = 'large';
+    } else {
+      marqueeVars.screenSize = 'small';
+    }
+
+    if ( marqueeVars.timePassed === marqueeVars.timeToChange ) {
+      marqueeVars.timePassed = 0;
+    } else {
+      marqueeVars.timePassed += 1;
+    }
+  }
 
 var debugTimer = setInterval(setDebugger, 100);
 function setDebugger() {
