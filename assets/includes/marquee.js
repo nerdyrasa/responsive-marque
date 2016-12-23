@@ -34,6 +34,7 @@ function marqueeGatherData() {
 }
   function marqueeAdvance() {
     var marqueeWidth = $('.marquee').width();
+    var currentSize = marqueeVars.screenSize;
 
     if ( marqueeWidth > marqueeVars.mobileSize ) {
       marqueeVars.screenSize = 'large';
@@ -41,11 +42,36 @@ function marqueeGatherData() {
       marqueeVars.screenSize = 'small';
     }
 
+    if ( currentSize !== marqueeVars.screenSize) {
+      if (marqueeVars.screenSize === 'large') {
+        marqueeMultiPanel();
+      }
+    }
+
     if ( marqueeVars.timePassed === marqueeVars.timeToChange ) {
       marqueeVars.timePassed = 0;
     } else {
       marqueeVars.timePassed += 1;
     }
+  }
+
+  function marqueeMultiPanel(){
+    marqueeVars.timePassed = 0;
+    marqueeVars.autoPlay = true;
+    var newHTML = '<div class="marquee_stage_large"><div class="marquee_container_1"></div><div class="marquee_nav"></div><div class="btn prev"></div><div class="btn next"></div></div>';
+    $('.marquee').html('').append(newHTML);
+
+    for (var i=0; i < marqueeVars.totalPanels; i++) {
+      $('.marquee_nav').append('<div>x</div>');
+    }
+
+    $('.marquee').hover(function(){
+      marqueeVars.autoPlay = false;
+    }, function(){
+      marqueeVars.autoPlay = true;
+      marqueeVars.timePassed = Math.floor(marqueeVars.timeToChange / 2);
+      console.log('timePassed = ', marqueeVars.timePassed);
+    });
   }
 
 var debugTimer = setInterval(setDebugger, 100);
