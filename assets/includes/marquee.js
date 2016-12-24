@@ -25,7 +25,7 @@ function marqueeGatherData() {
     var panel_image_s = $(this).attr('data-image')+'_s.jpg';
     var panel_caption = $(this).html();
     marqueeVars.panelContent[index] =
-      'div class="marquee_panel" data-image-s="' + panel_image_s +
+      '<div class="marquee_panel" data-image-s="' + panel_image_s +
       '"style="background-image:url(' + panel_image_l + ');"><div class="overlay"></div>' +
       '<div class="panel_caption">' + panel_caption + '</div></div>';
 
@@ -72,6 +72,21 @@ function marqueeGatherData() {
       marqueeVars.timePassed = Math.floor(marqueeVars.timeToChange / 2);
       console.log('timePassed = ', marqueeVars.timePassed);
     });
+
+    $('.marquee_nav div').on('click', function(){
+      var navClicked = $(this).index();
+      marqueeVars.currentPanel = navClicked + 1;
+      console.log("clicked = ", marqueeVars.currentPanel);
+
+      $('.marquee_stage_large').append('<div class="marquee_container_2" style="opacity:0;"></div>');
+      $('.marquee_container_2').html(marqueeVars.panelContent[navClicked]).animate({opacity: 1},
+        marqueeVars.duration, function(){
+          $('.marquee_container_1').remove();
+          $(this).addClass('marquee_container_1').removeClass('marquee_container_2');
+        });
+
+    });
+    $('.marquee_nav div:first').trigger('click');
   }
 
 var debugTimer = setInterval(setDebugger, 100);
