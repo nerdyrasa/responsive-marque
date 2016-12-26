@@ -18,6 +18,38 @@ body {
     display: none;
 }
 
+.marquee .marquee_stage_large {
+    height: inherit;
+    position: relative;
+    overflow: hidden;
+}
 
+.marquee .marquee_container_1,
+.marquee .marquee_container_2 {
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
 
+.marquee_container_1 {
+    z-index: 101;
+}
+
+.marquee_container_2 {
+    z-index: 102;
+}
+
+.marquee .marquee_panel {
+    height: inherit;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center 0;
+    background-size: cover;
+}
 
