@@ -144,4 +144,35 @@ body {
     background-color: #fff;
 }
 
+.marquee .btn {
+    width: 39px;
+    height: 39px;
+    background: rgba(255, 255, 255, .2) no-repeat;
+    background-size: 50px 30px;
+    position: absolute;
+    top: 192px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .5);
+    transition: background-color .4s, border .4s;
+}
+
+.marquee .btn:hover {
+    border-color: #fff;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.marquee .btn.prev {
+    left: 20px;
+    z-index: 104;
+    background-image: url(../images/arrow_left.svg);
+    background-position: -8px 4px;
+}
+
+.marquee .btn.next {
+    right: 20px;
+    z-index: 105;
+    background-image: url(../images/arrow_right.svg);
+    background-position: -3px 4px;
+}
 
