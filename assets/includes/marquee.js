@@ -7,7 +7,7 @@ var marqueeVars = {
   width : 0,
   mobileSize : 600,
   autoPlay : 0,
-  currentPanel : 1,
+  currentPanel : 100,
   totalPanels : 0,
   timePassed : 0,
   timeToChange : 60,
@@ -73,17 +73,26 @@ function marqueeGatherData() {
       console.log('timePassed = ', marqueeVars.timePassed);
     });
 
-    $('.marquee_nav div').on('click', function(){
+    $('.marquee_nav div').on('click', function() {
       var navClicked = $(this).index();
-      marqueeVars.currentPanel = navClicked + 1;
-      console.log("clicked = ", marqueeVars.currentPanel);
 
-      $('.marquee_stage_large').append('<div class="marquee_container_2" style="opacity:0;"></div>');
-      $('.marquee_container_2').html(marqueeVars.panelContent[navClicked]).animate({opacity: 1},
-        marqueeVars.duration, function(){
-          $('.marquee_container_1').remove();
-          $(this).addClass('marquee_container_1').removeClass('marquee_container_2');
+      console.log("navClicked = ", navClicked, " marquee.currentPanel - 1 = ", marqueeVars.currentPanel - 1);
+
+      // check that navigation button was not pressed twice; that would result in a blank screen
+      if (navClicked !== marqueeVars.currentPanel - 1) {
+
+        marqueeVars.currentPanel = navClicked + 1;
+        console.log("clicked = ", marqueeVars.currentPanel);
+
+        $('.marquee_stage_large').append('<div class="marquee_container_2" style="opacity:0;"></div>');
+
+        $('.marquee_container_2').html(marqueeVars.panelContent[navClicked]).animate({opacity: 1},
+          marqueeVars.duration, function () {
+            $('.marquee_container_1').remove();
+            $(this).addClass('marquee_container_1').removeClass('marquee_container_2');
         });
+
+      }
 
     });
     $('.marquee_nav div:first').trigger('click');
