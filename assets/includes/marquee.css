@@ -175,3 +175,16 @@ body {
     background-position: -3px 4px;
 }
 
+.marquee .marquee_stage_small {
+    height: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.marquee .marquee_stage_small .marquee_panel {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
