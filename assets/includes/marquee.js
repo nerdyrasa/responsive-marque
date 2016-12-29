@@ -23,7 +23,6 @@
       marqueeVars.totalPanels = index + 1;
       var panel_image_l = $(this).attr('data-image') + '_l.jpg';
       var panel_image_s = $(this).attr('data-image') + '_s.jpg';
-      console.log('s = ', panel_image_s);
       var panel_caption = $(this).html();
       marqueeVars.panelContent[index] =
         '<div class="marquee_panel" data-image-s="' + panel_image_s +
@@ -38,10 +37,9 @@
     var marqueeWidth = $('.marquee').width();
     var currentSize = marqueeVars.screenSize;
 
+    var newSize = 'small';
     if (marqueeWidth > marqueeVars.mobileSize) {
-      var newSize = 'large';
-    } else {
-      var newSize = 'small';
+      newSize = 'large';
     }
 
     marqueeVars.screenSize = newSize;
@@ -137,23 +135,7 @@
 
     $('.marquee').html('').append('<div class="marquee_stage_small">'+marqueeVars.panelContent[0]+'</div>');
     var panel_image_s = $('.marquee .marquee_stage_small .marquee_panel').attr('data-image-s');
-    console.log(' s image = ', panel_image_s);
     $('.marquee .marquee_stage_small .marquee_panel').css('background-image','url('+panel_image_s+')');
-
-  }
-
-
-  var debugTimer = setInterval(setDebugger, 100);
-  function setDebugger() {
-    $('.var1').html('screenSize = ' + marqueeVars.screenSize);
-    $('.var2').html('width = ' + marqueeVars.width);
-    $('.var3').html('mobileSize = ' + marqueeVars.mobileSize);
-    $('.var4').html('autoPlay = ' + marqueeVars.autoPlay);
-    $('.var5').html('currentPanel = ' + marqueeVars.currentPanel);
-    $('.var6').html('totalPanels = ' + marqueeVars.totalPanels);
-    $('.var7').html('timePassed = ' + marqueeVars.timePassed);
-    $('.var8').html('timeToChange = ' + marqueeVars.timeToChange);
-    $('.var9').html('duration = ' + marqueeVars.inTransition);
 
   }
 
