@@ -1,6 +1,6 @@
 /* CSS Document */
 body {
-    margin: 0px;
+    margin: 0;
     padding: 10px;
 }
 
@@ -8,7 +8,7 @@ body {
     font-size: 16px;
     height: 425px;
     max-width: 1200px;
-    margin: 0px auto 20px auto;
+    margin: 0 auto 20px auto;
     border: 1px solid #ccc;
 }
 
@@ -69,14 +69,14 @@ body {
 
 .marquee .marquee_panel .panel_caption h3 {
     font-family: 'PT Serif', serif;
-    margin: 0px 0px 0px 0px;
+    margin: 0 0 0 0;
     font-weight: 400;
     font-size: 2.7em;
     color: #fff;
 }
 
 .marquee .marquee_panel .panel_caption p {
-    margin: 0px 50px 15px 50px;
+    margin: 0 50px 15px 50px;
     color: #888;
     font-size: 1.3em;
     color: rgba(255, 255, 255, .75);
@@ -159,6 +159,7 @@ body {
     border-color: #fff;
     background-color: rgba(0, 0, 0, .6);
 }
+
 
 .marquee .btn.prev {
     left: 20px;
