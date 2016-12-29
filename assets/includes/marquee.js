@@ -66,6 +66,7 @@ function marqueeGatherData() {
   function marqueeMultiPanel(){
     marqueeVars.timePassed = 0;
     marqueeVars.autoPlay = true;
+
     var newHTML = '<div class="marquee_stage_large"><div class="marquee_container_1"></div><div class="marquee_nav"></div><div class="btn prev"></div><div class="btn next"></div></div>';
     $('.marquee').html('').append(newHTML);
 
@@ -78,7 +79,25 @@ function marqueeGatherData() {
     }, function(){
       marqueeVars.autoPlay = true;
       marqueeVars.timePassed = Math.floor(marqueeVars.timeToChange / 2);
-      console.log('timePassed = ', marqueeVars.timePassed);
+    });
+
+    $('.marquee .btn').on('click', function(){
+
+      if (!marqueeVars.inTransition) {
+
+        if ( $(this).hasClass('prev') ) {
+          marqueeVars.currentPanel -= 1;
+          if ( marqueeVars.currentPanel < 1 ) {
+            marqueeVars.currentPanel = marqueeVars.totalPanels;
+          }
+        } else {
+          marqueeVars.currentPanel += 1;
+          if ( marqueeVars.currentPanel > marqueeVars.totalPanels ) {
+            marqueeVars.currentPanel = 1;
+          }
+        }
+    $('.marquee_nav div:nth-child('+marqueeVars.currentPanel+')').trigger('click');
+      }
     });
 
     $('.marquee_nav div').on('click', function() {
